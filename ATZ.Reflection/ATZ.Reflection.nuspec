@@ -8,7 +8,7 @@
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
-    <release>Initial NuGet Packaging.</release>
+    <releaseNotes>Initial NuGet Packaging.</releaseNotes>
     <copyright>Copyright 2016</copyright>
   </metadata>
 </package>
