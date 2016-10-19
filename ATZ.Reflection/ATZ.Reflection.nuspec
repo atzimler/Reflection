@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
+    <release>Initial NuGet Packaging.</release>
+    <copyright>Copyright 2016</copyright>
+  </metadata>
+</package>
