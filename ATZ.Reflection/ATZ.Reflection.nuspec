@@ -7,7 +7,7 @@
     <owners>$author$</owners>
 
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <licenseUrl>https://github.com/atzimler/Reflection/blob/master/LICENSE.txt</licenseUrl>
+    <licenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</licenseUrl>
     <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
     <releaseNotes>Initial NuGet Packaging.</releaseNotes>
     <copyright>Copyright 2016</copyright>

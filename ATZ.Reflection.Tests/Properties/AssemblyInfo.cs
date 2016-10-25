@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ATZ.Reflection.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Attila Tamás Zimler")]
+[assembly: AssemblyCompany("Attila Tamas Zimler")]
 [assembly: AssemblyProduct("ATZ.Reflection.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
