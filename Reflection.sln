@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{750EEB39-CBAB-49E8-90AC-3A285393AB59}"
 	ProjectSection(SolutionItems) = preProject
 		ATZ.Reflection.xml = ATZ.Reflection.xml
+		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
 Global
