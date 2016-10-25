@@ -42,5 +42,17 @@ namespace ATZ.Reflection.Tests
                     );
             }
         }
+
+        [Test]
+        public void ProvideCorrectNonGenericTypeName()
+        {
+            Assert.AreEqual("Template", typeof(Template<>).NonGenericName());
+        }
+
+        [Test]
+        public void ProvideCorrectContravariantTemplateName()
+        {
+            Assert.AreEqual("Template{in BaseClass}", typeof(Template<>).ContravariantGenericName(typeof(BaseClass)));
+        }
     }
 }

@@ -28,5 +28,15 @@ namespace ATZ.Reflection
             }
             return type.MakeGenericType(typeArguments);
         }
+
+        public static string ContravariantGenericName(this Type type, Type templateArgument)
+        {
+            return $"{type.NonGenericName()}{{in {templateArgument.Name}}}";
+        }
+
+        public static string NonGenericName(this Type type)
+        {
+            return type.Name.Replace("`1", "");
+        }
     }
 }
