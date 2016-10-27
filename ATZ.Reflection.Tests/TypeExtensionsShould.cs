@@ -46,15 +46,15 @@ namespace ATZ.Reflection.Tests
         }
 
         [Test]
-        public void ProvideCorrectContravariantTemplateNameForContravariantTemplate()
+        public void ProvideCorrectParameterizedGenericNameForContravariantTemplate()
         {
-            Assert.AreEqual("IContravariantInterface{in BaseClass}", typeof(IContravariantInterface<>).ContravariantGenericName(typeof(BaseClass)));
+            Assert.AreEqual("IContravariantInterface{in BaseClass}", typeof(IContravariantInterface<>).ParameterizedGenericName(typeof(BaseClass)));
         }
 
         [Test]
-        public void ProvideCorrectContravariantTemplateNameForNonVariantTemplate()
+        public void ProvideCorrectParameterizedGenericNameForNonVariantTemplate()
         {
-            Assert.AreEqual("Template{BaseClass}", typeof(Template<>).ContravariantGenericName(typeof(BaseClass)));
+            Assert.AreEqual("Template{BaseClass}", typeof(Template<>).ParameterizedGenericName(typeof(BaseClass)));
         }
 
         [Test]

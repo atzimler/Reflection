@@ -25,7 +25,7 @@ namespace ATZ.Reflection
             return type.MakeGenericType(typeArguments);
         }
 
-        public static string ContravariantGenericName(this Type type, Type templateArgument)
+        public static string ParameterizedGenericName(this Type type, Type templateArgument)
         {
             var genericTypeParameters = type.GetTypeInfo().GenericTypeParameters;
             var contravariantModifier = genericTypeParameters[0].IsContravariant() ? "in " : "";
