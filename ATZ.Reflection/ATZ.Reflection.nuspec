@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <licenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</licenseUrl>
     <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
-    <releaseNotes>Initial NuGet Packaging.</releaseNotes>
+    <releaseNotes>Improvements to contravariancy handling.</releaseNotes>
     <copyright>Copyright 2016</copyright>
   </metadata>
 </package>
