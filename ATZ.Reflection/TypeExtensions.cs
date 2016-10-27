@@ -27,7 +27,15 @@ namespace ATZ.Reflection
 
         public static string ContravariantGenericName(this Type type, Type templateArgument)
         {
-            return $"{type.NonGenericName()}{{in {templateArgument.Name}}}";
+            var genericTypeParameters = type.GetTypeInfo().GenericTypeParameters;
+            var contravariantModifier = genericTypeParameters[0].IsContravariant() ? "in " : "";
+
+            return $"{type.NonGenericName()}{{{contravariantModifier}{templateArgument.Name}}}";
+        }
+
+        public static bool IsContravariant(this Type type)
+        {
+            return (type.GetTypeInfo().GenericParameterAttributes & GenericParameterAttributes.Contravariant) != 0;
         }
 
         public static string NonGenericName(this Type type)

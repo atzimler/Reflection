@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using NUnit.Framework;
 
 namespace ATZ.Reflection.Tests
@@ -45,9 +46,31 @@ namespace ATZ.Reflection.Tests
         }
 
         [Test]
-        public void ProvideCorrectContravariantTemplateName()
+        public void ProvideCorrectContravariantTemplateNameForContravariantTemplate()
         {
-            Assert.AreEqual("Template{in BaseClass}", typeof(Template<>).ContravariantGenericName(typeof(BaseClass)));
+            Assert.AreEqual("IContravariantInterface{in BaseClass}", typeof(IContravariantInterface<>).ContravariantGenericName(typeof(BaseClass)));
+        }
+
+        [Test]
+        public void ProvideCorrectContravariantTemplateNameForNonVariantTemplate()
+        {
+            Assert.AreEqual("Template{BaseClass}", typeof(Template<>).ContravariantGenericName(typeof(BaseClass)));
+        }
+
+        [Test]
+        public void ReturnFalseForNonVariantTemplateParameterType()
+        {
+            var genericTypeParameters = typeof(Template<>).GetTypeInfo().GenericTypeParameters;
+
+            Assert.IsFalse(genericTypeParameters[0].IsContravariant());
+        }
+
+        [Test]
+        public void ReturnTrueForIsContravariantForContravariantTemplateParameterType()
+        {
+            var genericTypeParameters = typeof(IContravariantInterface<>).GetTypeInfo().GenericTypeParameters;
+
+            Assert.IsTrue(genericTypeParameters[0].IsContravariant());
         }
     }
 }

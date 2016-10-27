@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass.cs" />
+    <Compile Include="IContravariantInterface.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="TypeExtensionsShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
