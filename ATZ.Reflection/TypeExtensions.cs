@@ -25,12 +25,9 @@ namespace ATZ.Reflection
             return type.MakeGenericType(typeArguments);
         }
 
-        public static string ParameterizedGenericName(this Type type, Type templateArgument)
+        public static int GenericTypeParameterCount(this Type type)
         {
-            var genericTypeParameters = type.GetTypeInfo().GenericTypeParameters;
-            var contravariantModifier = genericTypeParameters[0].IsContravariant() ? "in " : "";
-
-            return $"{type.NonGenericName()}{{{contravariantModifier}{templateArgument.Name}}}";
+            return type.GetTypeInfo().GenericTypeParameters.Length;
         }
 
         public static bool IsContravariant(this Type type)
@@ -42,5 +39,14 @@ namespace ATZ.Reflection
         {
             return type.Name.Replace("`1", "");
         }
+
+        public static string ParameterizedGenericName(this Type type, Type templateArgument)
+        {
+            var genericTypeParameters = type.GetTypeInfo().GenericTypeParameters;
+            var contravariantModifier = genericTypeParameters[0].IsContravariant() ? "in " : "";
+
+            return $"{type.NonGenericName()}{{{contravariantModifier}{templateArgument.Name}}}";
+        }
+
     }
 }

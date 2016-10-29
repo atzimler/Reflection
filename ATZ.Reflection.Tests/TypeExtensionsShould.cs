@@ -72,5 +72,33 @@ namespace ATZ.Reflection.Tests
 
             Assert.IsTrue(genericTypeParameters[0].IsContravariant());
         }
+
+        [Test]
+        public void ReturnCorrectValueForTemplateParameterCountWithNonGenericClass()
+        {
+            Assert.AreEqual(0, typeof(BaseClass).GenericTypeParameterCount());
+        }
+
+        [Test]
+        public void ReturnCorrectValueForTemplateParameterCountWithOneParameter()
+        {
+            Assert.AreEqual(1, typeof(IContravariantInterface<>).GenericTypeParameterCount());
+        }
+
+        [Test]
+        public void ReturnCorrectValueForTemplateParameterCountWithTwoParameters()
+        {
+            Assert.AreEqual(2, typeof(IMultiParameterInterface<,>).GenericTypeParameterCount());
+        }
+
+        [Test]
+        [Explicit("TODO: Partially closing a template might not be supported by C#")]
+        public void ReturnCorrectValueForTemplateParameterCountWithPartiallyClosedTemplate()
+        {
+            var openInterfaceType = typeof(IMultiParameterInterface<,>);
+            var partiallyClosedInterfaceType = openInterfaceType.MakeGenericType(typeof(BaseClass));
+
+            Assert.AreEqual(1, partiallyClosedInterfaceType.GenericTypeParameterCount());
+        }
     }
 }
