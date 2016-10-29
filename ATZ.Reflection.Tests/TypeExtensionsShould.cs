@@ -90,15 +90,5 @@ namespace ATZ.Reflection.Tests
         {
             Assert.AreEqual(2, typeof(IMultiParameterInterface<,>).GenericTypeParameterCount());
         }
-
-        [Test]
-        [Explicit("TODO: Partially closing a template might not be supported by C#")]
-        public void ReturnCorrectValueForTemplateParameterCountWithPartiallyClosedTemplate()
-        {
-            var openInterfaceType = typeof(IMultiParameterInterface<,>);
-            var partiallyClosedInterfaceType = openInterfaceType.MakeGenericType(typeof(BaseClass));
-
-            Assert.AreEqual(1, partiallyClosedInterfaceType.GenericTypeParameterCount());
-        }
     }
 }
