@@ -46,6 +46,12 @@ namespace ATZ.Reflection.Tests
         }
 
         [Test]
+        public void ProvideCorrectNonGenericTypeNameForMultiParameterGeneric()
+        {
+            Assert.AreEqual("IMultiParameterInterface", typeof(IMultiParameterInterface<,>).NonGenericName());
+        }
+
+        [Test]
         public void ProvideCorrectParameterizedGenericNameForContravariantTemplate()
         {
             Assert.AreEqual("IContravariantInterface{in BaseClass}", typeof(IContravariantInterface<>).ParameterizedGenericName(typeof(BaseClass)));

@@ -37,7 +37,7 @@ namespace ATZ.Reflection
 
         public static string NonGenericName(this Type type)
         {
-            return type.Name.Replace("`1", "");
+            return type.Name.Replace($"`{type.GenericTypeParameterCount()}", "");
         }
 
         public static string ParameterizedGenericName(this Type type, Type templateArgument)
