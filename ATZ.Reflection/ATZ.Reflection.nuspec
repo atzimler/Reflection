@@ -10,6 +10,10 @@
     <licenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</licenseUrl>
     <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
     <releaseNotes>
+1.1.2:
+- First try to fix the problem with missing documentation of the API.
+
+1.1.1:
 - Added GenericTypeParameterCount.
 - Making a try to fit Semantic Versioning into the build system.
 - Also found a bug in NonGenericName(), so lets find out if SemVer is going to be able to work with my build system.
