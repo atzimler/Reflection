@@ -46,8 +46,13 @@
   <ItemGroup>
     <Compile Include="BaseClass.cs" />
     <Compile Include="IContravariantInterface.cs" />
+    <Compile Include="ImplBaseShould.cs" />
+    <Compile Include="ImplBaseTester.cs" />
     <Compile Include="IMultiParameterInterface.cs" />
     <Compile Include="Template.cs" />
+    <Compile Include="TestFunctionClass.cs" />
+    <Compile Include="TestMethodClass.cs" />
+    <Compile Include="TestPropertyClass.cs" />
     <Compile Include="TypeExtensionsShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
