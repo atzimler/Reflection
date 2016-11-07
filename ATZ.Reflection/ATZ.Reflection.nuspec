@@ -10,7 +10,7 @@
     <licenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</licenseUrl>
     <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
     <releaseNotes>
-1.2.0
+1.2.0:
 - ImplBase class for wrapping implementation objects without revealing their types and thus avoiding references to DLLs of their implementation.
       
 1.1.3:
