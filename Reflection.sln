@@ -15,16 +15,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
+		DebugNET45|Any CPU = DebugNET45|Any CPU
+		DebugNET452|Any CPU = DebugNET452|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9265AEF6-3CB3-4571-BDFE-1A304D451534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9265AEF6-3CB3-4571-BDFE-1A304D451534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9265AEF6-3CB3-4571-BDFE-1A304D451534}.DebugNET45|Any CPU.ActiveCfg = DebugNET45|Any CPU
+		{9265AEF6-3CB3-4571-BDFE-1A304D451534}.DebugNET45|Any CPU.Build.0 = DebugNET45|Any CPU
+		{9265AEF6-3CB3-4571-BDFE-1A304D451534}.DebugNET452|Any CPU.ActiveCfg = DebugNET452|Any CPU
+		{9265AEF6-3CB3-4571-BDFE-1A304D451534}.DebugNET452|Any CPU.Build.0 = DebugNET452|Any CPU
 		{9265AEF6-3CB3-4571-BDFE-1A304D451534}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9265AEF6-3CB3-4571-BDFE-1A304D451534}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D45F6422-60F0-4327-8D02-D57F0E3D864C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D45F6422-60F0-4327-8D02-D57F0E3D864C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D45F6422-60F0-4327-8D02-D57F0E3D864C}.DebugNET45|Any CPU.ActiveCfg = DebugNET45|Any CPU
+		{D45F6422-60F0-4327-8D02-D57F0E3D864C}.DebugNET45|Any CPU.Build.0 = DebugNET45|Any CPU
+		{D45F6422-60F0-4327-8D02-D57F0E3D864C}.DebugNET452|Any CPU.ActiveCfg = DebugNET452|Any CPU
+		{D45F6422-60F0-4327-8D02-D57F0E3D864C}.DebugNET452|Any CPU.Build.0 = DebugNET452|Any CPU
 		{D45F6422-60F0-4327-8D02-D57F0E3D864C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D45F6422-60F0-4327-8D02-D57F0E3D864C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
