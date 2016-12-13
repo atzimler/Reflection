@@ -28,7 +28,7 @@
   </metadata>
 
   <files>
-    <file src="bin\DebugNET45\*.*" target="net45" />
-    <file src="bin\DebugNET452\*.*" target="net452" />
+    <file src="bin\DebugNET45\*.*" target="lib\net45" />
+    <file src="bin\DebugNET452\*.*" target="lib\net452" />
   </files>
 </package>
