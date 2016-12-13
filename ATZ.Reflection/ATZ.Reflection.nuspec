@@ -26,4 +26,9 @@
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
   </metadata>
+
+  <files>
+    <file src="bin\DebugNET45\*.*" target="net45" />
+    <file src="bin\DebugNET452\*.*" target="net452" />
+  </files>
 </package>
