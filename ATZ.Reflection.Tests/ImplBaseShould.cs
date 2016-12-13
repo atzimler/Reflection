@@ -1,6 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System;
 
 namespace ATZ.Reflection.Tests
 {
@@ -29,7 +28,7 @@ namespace ATZ.Reflection.Tests
         [Test]
         public void ReturnCorrectPropertyValue()
         {
-            var obj = new TestPropertyClass {Property = 42};
+            var obj = new TestPropertyClass { Property = 42 };
             var wrapper = new ImplBaseTester(obj);
 
             Assert.AreEqual(42, wrapper.GetProperty<int>(nameof(obj.Property)));
@@ -38,7 +37,7 @@ namespace ATZ.Reflection.Tests
         [Test]
         public void SetPropertyCorrectly()
         {
-            var obj = new TestPropertyClass {Property = 13};
+            var obj = new TestPropertyClass { Property = 13 };
             var wrapper = new ImplBaseTester(obj);
 
             wrapper.SetProperty(nameof(TestPropertyClass.Property), 42);
