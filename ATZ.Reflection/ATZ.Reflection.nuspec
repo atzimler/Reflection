@@ -10,6 +10,9 @@
     <licenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</licenseUrl>
     <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
     <releaseNotes>
+1.3.1:
+- Fixing 4th version number to be the number of the build instead some time dependent number indicated by *, as in case of time dependency different target frameworks got different numbers.
+      
 1.3.0:
 - Supporting .NET 4.5 target framework.
       
