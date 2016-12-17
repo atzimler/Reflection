@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATZ.Reflection.Tests", "ATZ
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{750EEB39-CBAB-49E8-90AC-3A285393AB59}"
 	ProjectSection(SolutionItems) = preProject
+		AssemblyVersion.cs = AssemblyVersion.cs
 		ATZ.Reflection.xml = ATZ.Reflection.xml
 		LICENSE.txt = LICENSE.txt
 	EndProjectSection
