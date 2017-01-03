@@ -8,4 +8,4 @@
 //PATCH version when you make backwards-compatible fixes.
 //Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
-[assembly: AssemblyVersion("1.3.2.*")]
+[assembly: AssemblyVersion("2.0.0.*")]
