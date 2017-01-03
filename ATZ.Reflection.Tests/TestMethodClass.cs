@@ -2,7 +2,7 @@
 {
     public class TestMethodClass
     {
-        public bool CorrectMethodExecuted { get; set; } = false;
+        public bool CorrectMethodExecuted { get; private set; }
 
         public void Method()
         {

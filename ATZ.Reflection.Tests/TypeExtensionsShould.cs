@@ -1,6 +1,5 @@
-﻿using System;
-using System.Reflection;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System;
 
 namespace ATZ.Reflection.Tests
 {
@@ -10,8 +9,11 @@ namespace ATZ.Reflection.Tests
         [Test]
         public void ProperlyCloseTemplateWithCorrectArgumentCount()
         {
-            var type = typeof(Template<>).CloseTemplate(new[] {typeof(BaseClass)});
-            var parts = type.FullName.Split(new[] {","}, StringSplitOptions.None);
+            var type = typeof(Template<>).CloseTemplate(new[] { typeof(BaseClass) });
+            Assert.IsNotNull(type);
+            Assert.IsNotNull(type.FullName);
+
+            var parts = type.FullName.Split(new[] { "," }, StringSplitOptions.None);
             Assert.AreEqual("ATZ.Reflection.Tests.Template`1[[ATZ.Reflection.Tests.BaseClass", parts[0]);
         }
 
@@ -19,7 +21,7 @@ namespace ATZ.Reflection.Tests
         public void ThrowExceptionWhenIncorrectNumberOfArgumentsIsProvided()
         {
             Assert.Throws(typeof(ArgumentException),
-                () => typeof(Template<>).CloseTemplate(new[] {typeof(BaseClass), typeof(BaseClass)}));
+                () => typeof(Template<>).CloseTemplate(new[] { typeof(BaseClass), typeof(BaseClass) }));
         }
 
         [Test]
@@ -27,7 +29,7 @@ namespace ATZ.Reflection.Tests
         {
             try
             {
-                typeof(Template<>).CloseTemplate(new[] {typeof(BaseClass), typeof(BaseClass)});
+                typeof(Template<>).CloseTemplate(new[] { typeof(BaseClass), typeof(BaseClass) });
                 Assert.Fail("Exception not thrown!");
             }
             catch (ArgumentException exception)
@@ -66,16 +68,18 @@ namespace ATZ.Reflection.Tests
         [Test]
         public void ReturnFalseForNonVariantTemplateParameterType()
         {
-            var genericTypeParameters = typeof(Template<>).GetTypeInfo().GenericTypeParameters;
-
+            var genericTypeParameters = typeof(Template<>).GetGenericTypeParameters();
+            Assert.AreEqual(1, genericTypeParameters.Length);
+            Assert.IsNotNull(genericTypeParameters[0]);
             Assert.IsFalse(genericTypeParameters[0].IsContravariant());
         }
 
         [Test]
         public void ReturnTrueForIsContravariantForContravariantTemplateParameterType()
         {
-            var genericTypeParameters = typeof(IContravariantInterface<>).GetTypeInfo().GenericTypeParameters;
-
+            var genericTypeParameters = typeof(IContravariantInterface<>).GetGenericTypeParameters();
+            Assert.AreEqual(1, genericTypeParameters.Length);
+            Assert.IsNotNull(genericTypeParameters[0]);
             Assert.IsTrue(genericTypeParameters[0].IsContravariant());
         }
 
