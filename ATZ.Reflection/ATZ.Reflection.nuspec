@@ -10,6 +10,9 @@
     <licenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</licenseUrl>
     <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
     <releaseNotes>
+2.1.0:
+- Retaining the ReSharper annotations in the assembly symbols.
+      
 2.0.0:
 - Eliminating possibilities for null reference exceptions and adding annotations for ReSharper.
       
