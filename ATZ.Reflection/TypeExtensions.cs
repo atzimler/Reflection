@@ -32,7 +32,7 @@ namespace ATZ.Reflection
         /// <returns>The concrete type created from type by using typeArguments.</returns>
         /// <exception cref="ArgumentException">The count of type arguments provided mismatch the count of type arguments needed to complete the template.</exception>
         /// <exception cref="ArgumentNullException">The parameter typeArguments is null.</exception>
-        // TODO: This needs to be marked [NotNull] but that is going to change the interface again and we already did that twice in the past days :) Will be with the next release later.
+        [NotNull]
         public static Type CloseTemplate([NotNull] this Type type, Type[] typeArguments)
         {
             if (typeArguments == null)
