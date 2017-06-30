@@ -28,6 +28,17 @@ namespace ATZ.Reflection.Tests
         }
 
         [Test]
+        public void ThrowExceptionIfParameterTypesIsNull()
+        {
+            var obj = new TestMethodClass();
+            var wrapper = new ImplBaseTester(obj);
+
+            var ex = Assert.Throws<ArgumentNullException>(() => wrapper.ExecuteMethod2(nameof(obj.Method), null, 42));
+            Assert.IsNotNull(ex);
+            ex.ParamName.Should().Be("parameterTypes");
+        }
+
+        [Test]
         public void ThrowExceptionIfMethodNameIsInvalid()
         {
             var obj = new TestMethodClass();
@@ -132,6 +143,54 @@ namespace ATZ.Reflection.Tests
 
             wrapper.SetProperty(nameof(TestPropertyClass.Property), 42);
             Assert.AreEqual(42, obj.Property);
+        }
+
+        [Test]
+        public void ThrowExceptionIfHandlerNameIsNull()
+        {
+            var obj = new TestEventClass();
+            var wrapper = new ImplBaseTester(obj);
+
+            var ex = Assert.Throws<ArgumentNullException>(() => wrapper.AddEvent<EventArgs>(nameof(TestEventClass.Event), null));
+            Assert.IsNotNull(ex);
+            ex.ParamName.Should().Be("handlerName");
+        }
+
+        [Test]
+        public void ThrowExceptionIfHandlerNameIsInvalid()
+        {
+            var obj = new TestEventClass();
+            var wrapper = new ImplBaseTester(obj);
+
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(
+                () => wrapper.AddEvent<EventArgs>(nameof(TestEventClass.Event), "invalid"));
+            Assert.IsNotNull(ex);
+            ex.Message.Should().Be("Invalid handler name supplied!\r\nParameter name: handlerName");
+        }
+
+        [Test]
+        public void ThrowExceptionIfHandlerHasIncorrectSignature()
+        {
+            var obj = new TestEventClass();
+            var wrapper = new ImplBaseTester(obj);
+
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(
+                () => wrapper.AddEvent<EventArgs>(nameof(TestEventClass.Event),
+                    nameof(ImplBaseTester.HandleEvent2)));
+            Assert.IsNotNull(ex);
+            ex.Message.Should().Be("Invalid handler name supplied!\r\nParameter name: handlerName");
+        }
+
+        [Test]
+        public void ThrowExceptionIfEventNameIsInvalid()
+        {
+            var obj = new TestEventClass();
+            var wrapper = new ImplBaseTester(obj);
+
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(
+                () => wrapper.AddEvent<EventArgs>("InvalidEvent", nameof(ImplBaseTester.HandleEvent)));
+            Assert.IsNotNull(ex);
+            ex.Message.Should().Be("Invalid event name supplied!\r\nParameter name: eventName");
         }
 
         [Test]

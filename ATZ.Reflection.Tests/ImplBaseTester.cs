@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace ATZ.Reflection.Tests
 {
@@ -51,5 +52,8 @@ namespace ATZ.Reflection.Tests
             EventCalled = true;
         }
 
+        public void HandleEvent2(object sender, PropertyChangedEventArgs e)
+        {
+        }
     }
 }

@@ -134,5 +134,22 @@ namespace ATZ.Reflection.Tests
             Assert.IsNotNull(ex);
             ex.ParamName.Should().Be("type");
         }
+
+        [Test]
+        public void ThrowExceptionIfTypeIsNullForGetTypeInfo()
+        {
+            var ex = Assert.Throws<ArgumentNullException>(() => TypeExtensions.IntrospectionGetTypeInfo(null));
+            Assert.IsNotNull(ex);
+            ex.ParamName.Should().Be("type");
+        }
+
+        [Test]
+        public void ThrowExceptionIfTemplateArgumentsIsNullForCloseTemplate()
+        {
+            var ex = Assert.Throws<ArgumentNullException>(
+                () => typeof(IContravariantInterface<>).CloseTemplate(null));
+            Assert.IsNotNull(ex);
+            ex.ParamName.Should().Be("typeArguments");
+        }
     }
 }
