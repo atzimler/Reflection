@@ -24,9 +24,14 @@ namespace ATZ.Reflection.Tests
             return base.ExecuteFunction(functionName, parameterTypes, parameters);
         }
 
-        public new void ExecuteMethod(string functionName, params object[] parameters)
+        public new void ExecuteMethod(string methodName, params object[] parameters)
         {
-            base.ExecuteMethod(functionName, parameters);
+            base.ExecuteMethod(methodName, parameters);
+        }
+
+        public void ExecuteMethod2(string methodName, Type[] parameterTypes, params object[] parameters)
+        {
+            base.ExecuteMethod(methodName, parameterTypes, parameters);
         }
 
         public new T GetProperty<T>(string propertyName)

@@ -63,21 +63,21 @@ namespace ATZ.Reflection
         }
 
         [NotNull]
-        private MethodInfo GetMethod(string functionName, Type[] parameterTypes)
+        private MethodInfo GetMethod(string methodName, Type[] parameterTypes)
         {
-            if (functionName == null)
+            if (methodName == null)
             {
-                throw new ArgumentNullException(nameof(functionName));
+                throw new ArgumentNullException(nameof(methodName));
             }
             if (parameterTypes == null)
             {
                 throw new ArgumentNullException(nameof(parameterTypes));
             }
 
-            var methodInfo = _type.IntrospectionGetMethod(functionName, parameterTypes);
+            var methodInfo = _type.IntrospectionGetMethod(methodName, parameterTypes);
             if (methodInfo == null)
             {
-                throw new ArgumentOutOfRangeException(nameof(functionName), "Class function with given name doest not exist!");
+                throw new ArgumentOutOfRangeException(nameof(methodName), "Class method with given name does not exist!");
             }
 
             return methodInfo;

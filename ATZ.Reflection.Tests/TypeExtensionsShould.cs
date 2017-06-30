@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using System;
 
 namespace ATZ.Reflection.Tests
@@ -99,6 +100,39 @@ namespace ATZ.Reflection.Tests
         public void ReturnCorrectValueForTemplateParameterCountWithTwoParameters()
         {
             Assert.AreEqual(2, typeof(IMultiParameterInterface<,>).GenericTypeParameterCount());
+        }
+
+        [Test]
+        public void ThrowExceptionIfTemplateArgumentIsNull()
+        {
+            var ex = Assert.Throws<ArgumentNullException>(
+                () => typeof(IContravariantInterface<>).ParameterizedGenericName(null));
+            Assert.IsNotNull(ex);
+            ex.ParamName.Should().Be("templateArgument");
+        }
+
+        [Test]
+        public void ReturnNonGenericNameForNonGenericTypes()
+        {
+            Assert.AreEqual(nameof(BaseClass), typeof(BaseClass).ParameterizedGenericName(typeof(int)));
+        }
+
+        [Test]
+        public void ThrowExceptionIfTypeIsNullForGetMethod()
+        {
+            var ex = Assert.Throws<ArgumentNullException>(
+                () => TypeExtensions.IntrospectionGetMethod(null, "", new Type[] { }));
+            Assert.IsNotNull(ex);
+            ex.ParamName.Should().Be("type");
+        }
+
+        [Test]
+        public void ThrowExceptionIfTypeIsNullForGetProperty()
+        {
+            var ex = Assert.Throws<ArgumentNullException>(
+                () => TypeExtensions.IntrospectionGetProperty(null, ""));
+            Assert.IsNotNull(ex);
+            ex.ParamName.Should().Be("type");
         }
     }
 }

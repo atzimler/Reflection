@@ -24,6 +24,13 @@ namespace ATZ.Reflection
             return $"({string.Join(", ", typeArguments.ToList().Select(t => t?.FullName ?? $"<{t?.Name}>"))})";
         }
 
+        /// <summary>
+        /// Searches for the specified instance method which matches the specified argument types in its parameter signature.
+        /// </summary>
+        /// <param name="type">The type on which the search should be done.</param>
+        /// <param name="methodName">The name of the method to look up.</param>
+        /// <param name="parameterTypes">The parameter signature of the method to look up.</param>
+        /// <returns>The MethodInfo representing the method or null if the method was not found.</returns>
         public static MethodInfo IntrospectionGetMethod(this Type type, [NotNull] string methodName, [NotNull] Type[] parameterTypes)
         {
             if (type == null)
@@ -34,6 +41,12 @@ namespace ATZ.Reflection
             return type.IntrospectionGetDeclaredMethods(methodName).Instance().WithParameterSignature(parameterTypes).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Searches for the specified property.
+        /// </summary>
+        /// <param name="type">The type on which the search should be done.</param>
+        /// <param name="propertyName">The name of the property to look up.</param>
+        /// <returns>The PropertyInfo representing the property or null if the property was not found.</returns>
         public static PropertyInfo IntrospectionGetProperty(this Type type, [NotNull] string propertyName)
         {
             if (type == null)
@@ -86,6 +99,7 @@ namespace ATZ.Reflection
                     + $"while provided {TypeArgumentsToString(typeArguments)}. Array counts mismatch ({genericTypeParameters.Length} != {typeArguments.Length})"
                     );
             }
+            // ReSharper disable once AssignNullToNotNullAttribute => A type is either created or exception is being thrown.
             return type.MakeGenericType(typeArguments);
         }
 
@@ -119,7 +133,7 @@ namespace ATZ.Reflection
         /// Returns information on the usage of the type in the generic template.
         /// </summary>
         /// <param name="type">The type used in the generic template.</param>
-        /// <returns>True if the type is used in the generic template as contravariant (&lt;in&gt;), otherwise false.</returns>
+        /// <returns>True if the type is used in the generic template as contra-variant (&lt;in&gt;), otherwise false.</returns>
         public static bool IsContravariant([NotNull] this Type type)
         {
             return (IntrospectionGetTypeInfo(type).GenericParameterAttributes & GenericParameterAttributes.Contravariant) != 0;
@@ -132,6 +146,7 @@ namespace ATZ.Reflection
         /// <returns>The Name of the type with removed generic parameter count indication.</returns>
         public static string NonGenericName([NotNull] this Type type)
         {
+            // ReSharper disable once PossibleNullReferenceException => types always have name.
             return type.Name.Replace($"`{type.GenericTypeParameterCount()}", "");
         }
 
