@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ATZ.Reflection\ATZ.Reflection.csproj">
-      <Project>{9265AEF6-3CB3-4571-BDFE-1A304D451534}</Project>
+      <Project>{0ae12ef0-1720-4bd9-b4e8-4b9cf3e0eee2}</Project>
       <Name>ATZ.Reflection</Name>
     </ProjectReference>
   </ItemGroup>

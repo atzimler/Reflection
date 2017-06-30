@@ -23,19 +23,15 @@ namespace ATZ.Reflection
         /// <exception cref="ArgumentNullException">The object to be wrapped is null.</exception>
         protected ImplBase(object impl)
         {
-            if (impl == null)
-            {
-                throw new ArgumentNullException(nameof(impl));
-            }
-
-            _impl = impl;
+            _impl = impl ?? throw new ArgumentNullException(nameof(impl));
+            // ReSharper disable once AssignNullToNotNullAttribute => non-null objects always have a type.
             _type = _impl.GetType();
         }
 
         [NotNull]
         private EventInfo GetEventInfo(string eventName)
         {
-            var eventInfo = _type.GetEvent(eventName);
+            var eventInfo = _type.IntrospectionGetTypeInfo().GetDeclaredEvent(eventName);
             if (eventInfo == null)
             {
                 throw new ArgumentOutOfRangeException(nameof(eventName), "Invalid event name supplied!");
@@ -46,7 +42,7 @@ namespace ATZ.Reflection
 
         private static MethodInfo GetGetMethod([NotNull] PropertyInfo pi)
         {
-            return pi.GetGetMethod();
+            return pi.GetMethod;
         }
 
         [NotNull]
@@ -57,11 +53,7 @@ namespace ATZ.Reflection
                 throw new ArgumentNullException(nameof(handlerName));
             }
 
-            var handler = GetType().GetMethod(handlerName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance,
-                null,
-                new[] { typeof(object), eventArgsType },
-                null);
+            var handler = GetType().IntrospectionGetMethod(handlerName, new[] { typeof(object), eventArgsType });
             if (handler == null)
             {
                 throw new ArgumentOutOfRangeException(nameof(handlerName), "Invalid handler name supplied!");
@@ -82,7 +74,7 @@ namespace ATZ.Reflection
                 throw new ArgumentNullException(nameof(parameterTypes));
             }
 
-            var methodInfo = _type.GetMethod(functionName, parameterTypes);
+            var methodInfo = _type.IntrospectionGetMethod(functionName, parameterTypes);
             if (methodInfo == null)
             {
                 throw new ArgumentOutOfRangeException(nameof(functionName), "Class function with given name doest not exist!");
@@ -99,7 +91,7 @@ namespace ATZ.Reflection
                 throw new ArgumentNullException(nameof(propertyName));
             }
 
-            var propertyInfo = _type.GetProperty(propertyName);
+            var propertyInfo = _type.IntrospectionGetProperty(propertyName);
             if (propertyInfo == null)
             {
                 throw new ArgumentOutOfRangeException(nameof(propertyName), "Property does not exist!");
@@ -115,9 +107,9 @@ namespace ATZ.Reflection
             return methodInfo;
         }
 
-        private MethodInfo GetSetMethod([NotNull] PropertyInfo pi)
+        private static MethodInfo GetSetMethod([NotNull] PropertyInfo pi)
         {
-            return pi.GetSetMethod();
+            return pi.SetMethod;
         }
 
         /// <summary>
@@ -133,9 +125,8 @@ namespace ATZ.Reflection
             var eventInfo = GetEventInfo(eventName);
             var delegateType = eventInfo.EventHandlerType;
             var handler = GetHandlerMethod(handlerName, typeof(T));
-            var d = Delegate.CreateDelegate(delegateType, this, handler);
-            var addMethod = eventInfo.GetAddMethod();
-            addMethod.Invoke(_impl, new object[] { d });
+            var d = handler.CreateDelegate(delegateType, this);
+            eventInfo.AddMethod?.Invoke(_impl, new object[] { d });
         }
 
         /// <summary>
@@ -220,9 +211,8 @@ namespace ATZ.Reflection
             var eventInfo = GetEventInfo(eventName);
             var delegateType = eventInfo.EventHandlerType;
             var handler = GetHandlerMethod(handlerName, typeof(T));
-            var d = Delegate.CreateDelegate(delegateType, this, handler);
-            var removeMethod = eventInfo.GetRemoveMethod();
-            removeMethod.Invoke(_impl, new object[] { d });
+            var d = handler.CreateDelegate(delegateType, this);
+            eventInfo.RemoveMethod?.Invoke(_impl, new object[] { d });
         }
 
         /// <summary>

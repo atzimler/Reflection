@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using ATZ.Reflection.Linq;
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,20 +13,57 @@ namespace ATZ.Reflection
     public static class TypeExtensions
     {
         [NotNull]
-        private static TypeInfo IntrospectionGetTypeInfo([NotNull] Type type)
+        private static IEnumerable<MethodInfo> IntrospectionGetDeclaredMethods([NotNull] this Type type, [NotNull] string methodName)
         {
+            // ReSharper disable once AssignNullToNotNullAttribute => Microsoft libraries correctly return empty enumerations when no result.
+            return type.IntrospectionGetTypeInfo().GetDeclaredMethods(methodName);
+        }
+
+        private static string TypeArgumentsToString([NotNull] IEnumerable<Type> typeArguments)
+        {
+            return $"({string.Join(", ", typeArguments.ToList().Select(t => t?.FullName ?? $"<{t?.Name}>"))})";
+        }
+
+        public static MethodInfo IntrospectionGetMethod(this Type type, [NotNull] string methodName, [NotNull] Type[] parameterTypes)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            return type.IntrospectionGetDeclaredMethods(methodName).Instance().WithParameterSignature(parameterTypes).FirstOrDefault();
+        }
+
+        public static PropertyInfo IntrospectionGetProperty(this Type type, [NotNull] string propertyName)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            return type.IntrospectionGetTypeInfo().GetDeclaredProperty(propertyName);
+        }
+
+        /// <summary>
+        /// Returns the TypeInfo object and at the same time eliminates the ReSharper warning about possible null reference.
+        /// </summary>
+        /// <param name="type">The Type for which we are looking for the TypeInfo object.</param>
+        /// <returns>The TypeInfo object associated with the Type.</returns>
+        [NotNull]
+        public static TypeInfo IntrospectionGetTypeInfo(this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             // ReSharper disable once AssignNullToNotNullAttribute => IntrospectionExtensions.GetTypeInfo() has
             // no documented return possibility for null and it would not make sense to return null for a non-null type.
             return type.GetTypeInfo();
         }
 
-        private static string TypeArgumentsToString([NotNull] IEnumerable<Type> typeArguments)
-        {
-            return $"({string.Join(", ", typeArguments.ToList().ConvertAll(t => t?.FullName ?? $"<{t?.Name}>"))})";
-        }
-
         /// <summary>
-        /// Close the the generic template with the specified types.
+        /// Close the generic template with the specified types.
         /// </summary>
         /// <param name="type">The generic type to close with the provided arguments.</param>
         /// <param name="typeArguments">The types used to create the concrete type from the generic template.</param>
