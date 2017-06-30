@@ -2,12 +2,12 @@
 {
     public class TestPropertyClass
     {
-        private int _w;
-
         public int Property { get; set; }
         public int WriteOnlyProperty
         {
-            set => _w = value;
+            // ReSharper disable once MemberCanBePrivate.Global => Just testing functionality of not having a get.
+            // ReSharper disable once ValueParameterNotUsed => Just testing functionality of not having a get.
+            set { }
         }
     }
 }
