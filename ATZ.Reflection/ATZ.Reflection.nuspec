@@ -10,6 +10,10 @@
     <licenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</licenseUrl>
     <description>Generic library for extending reflection capabilities of the .NET Framework.</description>
     <releaseNotes>
+3.1.0:
+- TypeExtensions.IntrospectionBaseType() for easily accessing the BaseType information.
+- Retaining code annotations.
+
 3.0.0:
 - PCL 259.
       

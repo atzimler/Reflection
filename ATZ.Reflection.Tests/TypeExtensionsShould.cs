@@ -151,5 +151,21 @@ namespace ATZ.Reflection.Tests
             Assert.IsNotNull(ex);
             ex.ParamName.Should().Be("typeArguments");
         }
+
+        [Test]
+        public void ReturnCorrectBaseTypeForDerivedClasses()
+        {
+            typeof(DerivedClass).IntrospectionBaseType().Should().Be(typeof(BaseClass));
+            typeof(BaseClass).IntrospectionBaseType().Should().Be(typeof(object));
+            typeof(object).IntrospectionBaseType().ShouldBeEquivalentTo(null);
+        }
+
+        [Test]
+        public void ThrowExceptionForCheckingBaseTypeOfNull()
+        {
+            var ex = Assert.Throws<ArgumentNullException>(() => TypeExtensions.IntrospectionBaseType(null));
+            Assert.IsNotNull(ex);
+            ex.ParamName.Should().Be("type");
+        }
     }
 }

@@ -25,6 +25,21 @@ namespace ATZ.Reflection
         }
 
         /// <summary>
+        /// Gets the type which a type directly inherits.
+        /// </summary>
+        /// <param name="type">The type to check.</param>
+        /// <returns>The type from which the type given as parameter directly inherits or null if the parameter type represents the object class or an interface.</returns>
+        public static Type IntrospectionBaseType(this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            return type.IntrospectionGetTypeInfo().BaseType;
+        }
+
+        /// <summary>
         /// Searches for the specified instance method which matches the specified argument types in its parameter signature.
         /// </summary>
         /// <param name="type">The type on which the search should be done.</param>
