@@ -49,7 +49,6 @@
   </metadata>
 
   <files>
-    <file src="bin\DebugNET45\ATZ.Reflection*.*" target="lib\net45" />
-    <file src="bin\DebugNET452\ATZ.Reflection*.*" target="lib\net452" />
+    <file src="bin\Debug\ATZ.Reflection*.*" target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20" />
   </files>
 </package>
