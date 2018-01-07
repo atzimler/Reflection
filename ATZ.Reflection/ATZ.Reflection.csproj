@@ -12,45 +12,82 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/atzimler/Reflection</PackageProjectUrl>
     <PackageReleaseNotes>4.0.0:
+
 - .NET Standard 2.0
 
+
+
 3.1.0:
+
 - TypeExtensions.IntrospectionBaseType() for easily accessing the BaseType information.
+
 - Retaining code annotations.
 
+
+
 3.0.0:
+
 - PCL 259.
-      
+
+
+
 2.2.0:
+
 - Type.CloseTemplate() does not return null, because in case of error it throws an Exception.
 
+
+
 2.1.0:
+
 - Retaining the ReSharper annotations in the assembly symbols.
-      
+
+
+
 2.0.0:
+
 - Eliminating possibilities for null reference exceptions and adding annotations for ReSharper.
-      
+
+
+
 1.3.2:
+
 - Excluding unintentionally delivered DLLs from the NuGet package.
-      
+
+
+
 1.3.1:
+
 - Fixing 4th version number to be the number of the build instead some time dependent number indicated by *, as in case of time dependency different target frameworks got different numbers.
-      
+
+
 1.3.0:
+
 - Supporting .NET 4.5 target framework.
-      
+
+
+
 1.2.0:
+
 - ImplBase class for wrapping implementation objects without revealing their types and thus avoiding references to DLLs of their implementation.
-      
+
+
 1.1.3:
+
 - Fixing missing project option with the XML documentation.
-      
+
+
+
 1.1.2:
+
 - First try to fix the problem with missing documentation of the API.
 
+
 1.1.1:
+
 - Added GenericTypeParameterCount.
+
 - Making a try to fit Semantic Versioning into the build system.
+
 - Also found a bug in NonGenericName(), so lets find out if SemVer is going to be able to work with my build system.
 </PackageReleaseNotes>
     <AssemblyVersion>12.0.0.0</AssemblyVersion>
