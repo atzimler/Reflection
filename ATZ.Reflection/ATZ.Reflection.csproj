@@ -11,7 +11,7 @@
     <Copyright>Copyright 2016</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/atzimler/Reflection/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/atzimler/Reflection</PackageProjectUrl>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>As Visual Studio gets confused by the newlines placed by itself into the csproj Release notes section, for Release notes please see: https://raw.githubusercontent.com/atzimler/Reflection/master/RELEASENOTES.txt</PackageReleaseNotes>
     <AssemblyVersion>12.0.0.0</AssemblyVersion>
     <FileVersion>11.0.0.0</FileVersion>
     <RepositoryUrl>https://github.com/atzimler/Reflection</RepositoryUrl>
