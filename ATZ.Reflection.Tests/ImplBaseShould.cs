@@ -46,7 +46,7 @@ namespace ATZ.Reflection.Tests
 
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => wrapper.ExecuteMethod("invalid", 42));
             Assert.IsNotNull(ex);
-            ex.Message.Should().Be("Class method with given name does not exist!\r\nParameter name: methodName");
+            ex.Message.Should().Be($"Class method with given name does not exist!{Environment.NewLine}Parameter name: methodName");
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace ATZ.Reflection.Tests
 
 
         [Test]
-        public void ThrowExeceptionIfParametersIsNullWithGivenParameterTypes()
+        public void ThrowExceptionIfParametersIsNullWithGivenParameterTypes()
         {
             var obj = new TestMethodClass();
             var wrapper = new ImplBaseTester(obj);
@@ -112,7 +112,7 @@ namespace ATZ.Reflection.Tests
 
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => wrapper.GetProperty<int>("invalid"));
             Assert.IsNotNull(ex);
-            ex.Message.Should().Be("Property does not exist!\r\nParameter name: propertyName");
+            ex.Message.Should().Be($"Property does not exist!{Environment.NewLine}Parameter name: propertyName");
         }
 
         [Test]
@@ -123,7 +123,7 @@ namespace ATZ.Reflection.Tests
 
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => wrapper.GetProperty<int>(nameof(obj.WriteOnlyProperty)));
             Assert.IsNotNull(ex);
-            ex.Message.Should().Be("Specified argument was out of the range of valid values.\r\nParameter name: Property get does not exist for WriteOnlyProperty!");
+            ex.Message.Should().Be($"Specified argument was out of the range of valid values.{Environment.NewLine}Parameter name: Property get does not exist for WriteOnlyProperty!");
         }
 
         [Test]
@@ -165,7 +165,7 @@ namespace ATZ.Reflection.Tests
             var ex = Assert.Throws<ArgumentOutOfRangeException>(
                 () => wrapper.AddEvent<EventArgs>(nameof(TestEventClass.Event), "invalid"));
             Assert.IsNotNull(ex);
-            ex.Message.Should().Be("Invalid handler name supplied!\r\nParameter name: handlerName");
+            ex.Message.Should().Be($"Invalid handler name supplied!{Environment.NewLine}Parameter name: handlerName");
         }
 
         [Test]
@@ -178,7 +178,7 @@ namespace ATZ.Reflection.Tests
                 () => wrapper.AddEvent<EventArgs>(nameof(TestEventClass.Event),
                     nameof(ImplBaseTester.HandleEvent2)));
             Assert.IsNotNull(ex);
-            ex.Message.Should().Be("Invalid handler name supplied!\r\nParameter name: handlerName");
+            ex.Message.Should().Be($"Invalid handler name supplied!{Environment.NewLine}Parameter name: handlerName");
         }
 
         [Test]
