@@ -190,7 +190,7 @@ namespace ATZ.Reflection.Tests
             var ex = Assert.Throws<ArgumentOutOfRangeException>(
                 () => wrapper.AddEvent<EventArgs>("InvalidEvent", nameof(ImplBaseTester.HandleEvent)));
             Assert.IsNotNull(ex);
-            ex.Message.Should().Be("Invalid event name supplied!\r\nParameter name: eventName");
+            ex.Message.Should().Be($"Invalid event name supplied!{Environment.NewLine}Parameter name: eventName");
         }
 
         [Test]
